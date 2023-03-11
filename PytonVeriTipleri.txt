@@ -1,0 +1,55 @@
+Python'da bulunan veri tiplerini şu şekilde gruplaya biliriz;
+1-Text Type
+a-) str
+String yani metin türündeki verilerdir.
+Çift tırnak ya da tek tırnak içine alınarak tanımlanır.
+example_veriable = "Hello World"
+2- Numeric Types
+Sayısal veri tipleridir.
+a-)int
+Tam sayıları tanımlamak için kullanılan sayısal veri tipidir.
+example_veriable = 2
+b-)float
+Ondalıklı sayıları tanımlamak için kullanılan veri tipidir.
+example_veriable = 12.5
+c-)complex
+komplex sayıları tanımlamak için kullanılan veri tipidir. a+bi
+komplex sayyı formatıdır.
+z = a + bi
+example_veriable = z
+
+3- Sequence or Array Types
+Dizi şeklindeki veri tipleridir.
+a-)list
+example_veriable = ["nissan","ford","mercedes",10,5.2]
+içerisinde birden fazla veri tipi barındırabilir
+b-)tuple
+list ile aynı mantıkta çalışır sadece tuple'a erişip güncelleme ve silme gibi işlemlere izin vermez
+example_veriable =("banana", "grape", "cherry")
+c-)range
+x=range(0,6)
+for i in x:
+  print(i)
+0 dan 6 ya kadar (6 hariç elemanları bir liste de tutar)
+
+4- Mapping Type
+a-)dict
+Elemanlarını eşleme yöntemi ile tutar
+example_veriable = {"name" :"Ali" ,"age" :36}
+5-Set Types
+a-)set 
+list ve tuple gibi yine birden fazla veri türünü içinde barındırabilir ama her eleman biricik olmak zorundadır.
+example_veriable = {"python","java","ruby"}
+b-)frozset
+bir set'in silme ekleme gibi işlemlerinin yapılamaz olduğu halidir
+frozset({"python","java","ruby"})
+
+5- Boolean Type
+True ya da False değer dönen tiplerdir şartlı ifadeler ile kullanılır.
+True = 1 i False ise 0 ı temsil eder.
+
+6-None Types
+Bellekte yer tutmayan ama halihazırda bir değişken olarak bulunan değerlerdir
+sehir = None
+yani sehir isminde bir değişkenim var ama buna daha değer ataması yapmadım.İlerleyen süreçte yapabilirim
+şimdilik NoneType.
