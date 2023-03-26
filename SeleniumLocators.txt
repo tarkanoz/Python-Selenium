@@ -1,0 +1,132 @@
+Selenium Locators 
+
+ 
+
+Bir html yapısında bir elemente ulaşmak için kullanılan nesneye denir. 
+
+En yaygın olarak kullanılan locator çeşitleri;  
+
+ . Id 
+
+. Name 
+
+.className 
+
+.TagName 
+
+.LinkText 
+
+.CssSelector 
+
+.Xpath 
+
+Öncelik her zaman id ve name özelliklerini kullanmaktır. 
+
+Selenium webdriver'da ilgilli elemente ulaşmka için find_element() ya da find_elements() fonksiyonlarını kullanırız. 
+
+ 
+
+1-ID 
+
+Web sayfalarında her ögeye özgü olduğu düşünülürse en yaygın kullanılan locator türüdür.(Bazı id'ler değişken olabilir sayfayı yenileyerek kontrol edilebilir) 
+
+driver.findElement(By.id(“createacc”)) 
+
+ 
+
+2-ClassName 
+
+Elementlerin class özelliği kullanılarak bulunur. 
+
+driver.findElement(By.className(“btn btn-lg btn-primary”)) 
+
+ 
+
+3-Name 
+
+Elementlerin name özelliği kullanılarak bulunur. 
+
+driver.findElement(By.name(“login-password”)) 
+
+ 
+
+ 
+
+4-TagName 
+
+5-LinkText 
+
+Elementlerin bağlantı metinleri aracılığıyla erişilmesi durumudur 
+
+ 
+
+<a href=”https://medium.com/@ilkebasalak” target=”_blank”>Blog</a>   
+
+Elementi bulmak için linktext kullanımı;   
+
+Syntax: driver.findElement(By.linkText(“Blog”)) 
+
+ 
+
+6-CssSelector 
+
+driver.findElement(By.cssSelector(“a#login”)) 
+
+                                                               Html tag ve id ismi ile 
+
+driver.findElement(By.cssSelector(“div.SearchBoxOld-buttonContainer”)) 
+
+                                                                Html tagı ve class ismi ile 
+
+ 
+
+*CssSelector'de child elementleri bulmak için bir yöntem olarak 
+
+        <ul class=giyim>  
+
+         <li class=kadın> 
+
+         <li class=erkek> 
+
+          <li class = cocuk> 
+
+         </ul> 
+
+         driver.findElement(By.cssSelector(“ul. Giyim li:nth-of-child(2)”); 
+
+     Bu şekilde erkek kategorisine ulaşmış oluruz 
+
+ 
+
+7-Xpath 
+
+ 
+
+driver.findElement(By.xpath(“//input[@id= ’login-username’]”)) 
+
+ 
+
+7.2 contains 
+
+Herhangi bir özelliğin değere dinamik olarak değiştiğinde kullanılır 
+
+driver.findElement(By.xpath(“//input[contains(@name, ‘q’)]”)) 
+
+ 
+
+7.3 and ve or 
+
+Xpath ile and ve or ifadelerini de kullanabiliriz 
+
+//input[@id=‘value of id’ OR @name=‘value of name’] 
+
+driver.findElement(By.xpath(“//input[@name=‘q’ AND @type=‘text’]”)) 
+
+ 
+
+7.4 text 
+
+Id name gibi özellikleri olmayan ancak text barındıran ifadelerde kullanılır 
+
+Xpath=//div[text()=’ve Siparişler’] 
+
