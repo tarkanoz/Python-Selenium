@@ -1,0 +1,85 @@
+Bilindiği üzere pytest, testlerimizi daha anlaşılır daha okunur ve düzenli yapmamız için oluşturulmuş bir Python frameworküdür.Decaratorler ise bir fonksiyona uygulanır ve bu fonksiyona yeni foksiyoneliteler katar.Pytest için kullanılan bazı decoratorleri inceleyelim 
+
+ 
+
+@pytest.mark.skip 
+
+Ilk olarak skip decoraor'ünden başlayalım.Bu decorator çalışmasını istemediğimiz yanı execute olmasını istemediğimiz test üzerinde tanımlanır ve o testi atlar. 
+
+import pytest  
+
+@pytest.mark.skip(reason="Dependent feature not yet ready")  
+
+def test_new_feature():  
+
+    print("New feature")  
+
+def test_login():  
+
+    print("Test Login") 
+
+Burada test_new_feature fonksiyonu execute edilmeyecek reason kısmında ise neden execute edilmeyeceğinin açıklaması yazılır. 
+
+ 
+
+@pytest.mark.skipif 
+
+Testi atlama durumunu koşula bağlayabiliriz.Bunu yapacak decarator ise skipif'dir 
+
+@pytest.mark.skipif(sys.platform == "win32", reason="does not run on windows")  
+
+ def test_function(self):  
+
+      "will not be setup or run under 'win32' platform" 
+
+Eğer win32 tru dönerse bu fonksiyon çalışır aksi durumda ise atlar. 
+
+ 
+
+@pytest.mark.xfail 
+
+Başarısız yani fail olacağı bilenen testlerde eklenir 
+
+@pytest.mark.xfail  
+
+def test_function(): 
+
+      … 
+
+@pytest.mark.xfail(reason="known parser issue") 
+ 
+
+def test_function(): 
+ 
+
+     … 
+
+Xfail'i kullandğımızda bu fonksiyon hakkında details yazdırmaz 
+
+ 
+
+@pytest.mark.parametrize 
+
+Bir yanlış login giriş testi düşünelim birden fazla user ve password denemek istiyoruz bunun için 
+
+Verdiğimiz birden fazla user ve passwordu dener. 
+
+@pytest.mark.parametrize("username,password",[("1","1"),("kullaniciadim","sifrem")]) 
+
+ def test_invalid_login(self,username,password): //sırayla önce username ve password için 1 1 i ardından username için kullaniciadim password için de sifrem i yazar 
+
+        usernameInput = self.driver.find_element(By.ID,"user-name") 
+
+        passwordInput =self.driver.find_element(By.ID,"password")  
+
+        usernameInput.send_keys(username)  
+
+        passwordInput.send_keys(password) 
+
+Ya da şu örneği inceleyelim 
+
+@pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+4", 6), ("6*9", 42)])  
+
+def test_eval(test_input, expected):  //sırasıyla test_input 3+5 expected ise 8 i alır ve bu senaryo bu şekilde 3 kere çalışır 
+
+       assert eval(test_input) == expected 
